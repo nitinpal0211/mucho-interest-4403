@@ -69,15 +69,15 @@ Link:
 
 ## Roles & Responsibilities :-
 
-All Work of Admin and Customer Management and LogIn Auth done BY Shimbhu Kumavat.
+All Work of Admin and Customer Management and LogIn Auth done BY [Shimbu Kumavat](github.com/Shimbhu77)
 
-All Work of Plant anagement Done By Nitin Kumar 
+All Work of Plant anagement Done By [Nitin Kumar](github.com/nitinpal0211) 
 
-All Work of Planter and Er Dia Done By Shreyash Ahuja
+All Work of Planter and Er Dia Done By [Shreyash Ahuja](github.com/loki025)
 
-All Work of Seed management Done by Aakash kumar
+All Work of Seed management Done by [Aakash Kumar](github.com/akash07032001)
 
-All work of order Management Done By chetan Patil 
+All work of order Management Done By [Chetan Patil](github.com/Chetan8788)
 
 ## Learning :-
 
