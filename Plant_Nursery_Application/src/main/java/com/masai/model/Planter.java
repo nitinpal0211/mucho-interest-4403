@@ -48,8 +48,8 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
-	@OneToMany(cascade= CascadeType.ALL)
-	Seed Seeds;
+//	@OneToMany(cascade= CascadeType.ALL)
+//	Seed Seeds;
 	
 	@OneToMany(cascade= CascadeType.ALL)
 	Plant Plants;

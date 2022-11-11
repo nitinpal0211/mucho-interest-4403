@@ -47,8 +47,8 @@ public class Order {
 	@OneToMany(cascade = CascadeType.ALL)
 	private @Valid List<Plant> plants;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private @Valid List<Seed> Seeds;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private @Valid List<Seed> Seeds;
 	
 	@NotNull(message="userid can't be null")
 	private Integer userid;

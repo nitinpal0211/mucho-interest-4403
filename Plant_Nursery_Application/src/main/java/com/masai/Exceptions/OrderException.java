@@ -1,4 +1,4 @@
-package com.masai.exception;
+package com.masai.Exceptions;
 
 
 
