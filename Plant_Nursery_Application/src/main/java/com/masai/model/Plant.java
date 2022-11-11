@@ -1,5 +1,7 @@
 package com.masai.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ManyToAny;
 
@@ -38,9 +42,10 @@ public class Plant {
 	private Integer plantStock;
 	private Double plantCost;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-
-	private Set<Planter> planters;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Planter planter;
+	
+	
 	
 
 }
