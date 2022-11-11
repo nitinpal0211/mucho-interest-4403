@@ -1,5 +1,7 @@
 package com.masai.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 public class Planter {
 	@Id
@@ -48,11 +49,11 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
-	@OneToMany(cascade= CascadeType.ALL)
-	Seed Seeds;
-	
-	@OneToMany(cascade= CascadeType.ALL)
-	Plant Plants;
+//	@OneToMany(cascade= CascadeType.ALL)
+//	Seed Seeds;
+//	
+//	@OneToMany(cascade= CascadeType.ALL)
+//	Plant Plants;
 
 	public Integer getPlanterId() {
 		// TODO Auto-generated method stub
