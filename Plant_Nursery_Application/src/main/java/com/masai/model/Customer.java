@@ -3,6 +3,7 @@ package com.masai.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer customerId;
-	@Size(min=3,max=20,message="please enter your name")
+	@Size(min=3,max=20,message="please enter your name with character 3 and maximum character is 8.")
 	private String customerName;
 	@Email(message = "please enter a valid email")
 	private String customerEmail;
@@ -34,6 +35,6 @@ public class Customer {
 	@Size(min=3,max=8,message="please enter password minimum character 3 and maximum character is 8.")
 	private String customerPassword;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Address> addresses=new HashSet<>();
 }
