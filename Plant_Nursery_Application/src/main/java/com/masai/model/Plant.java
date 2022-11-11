@@ -1,10 +1,16 @@
 package com.masai.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.ManyToAny;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +37,10 @@ public class Plant {
 	private String plantDescription;
 	private Integer plantStock;
 	private Double plantCost;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+
+	private Set<Planter> planters;
 	
 
 }
