@@ -9,7 +9,7 @@ Plant Application. In application Customer can Buy Seeds, Planter And Plant or C
 Also Admin can Manage or can do CRUD Operation On Plants, Seeds, Planters and Customers.
 
 
-![ERDiagram]()
+![ERDiagram](./Er_And_Images/erDiagram.png)
 
 
 ## Tech Stacks:
