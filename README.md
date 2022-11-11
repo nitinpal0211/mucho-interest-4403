@@ -9,7 +9,14 @@ Plant Application. In application Customer can Buy Seeds, Planter And Plant or C
 Also Admin can Manage or can do CRUD Operation On Plants, Seeds, Planters and Customers.
 
 
-![ERDiagram] (./Er_And_Images/erDiagram.png)
+## Entity RelationShiop Diagram Of Application:
+
+
+
+
+![ERDiagram](https://github.com/nitinpal0211/mucho-interest-4403/blob/main/Plant_Nursery_Application/Er_And_Images/erDiagram.png?raw=true)
+
+
 
 
 ## Tech Stacks:
