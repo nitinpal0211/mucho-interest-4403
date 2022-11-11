@@ -27,7 +27,8 @@ public class Seed {
 	private Integer seedsStock;
 	private Double seedsCost;
 	private Integer seedsPerPacket;
-	
 	@ManyToMany()
 	private Set<Planter> seedPlanters;
+	
+	
 }
