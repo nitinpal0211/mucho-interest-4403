@@ -1,6 +1,8 @@
 package com.masai.model;
 
 import java.util.Set;
+import java.time.LocalDateTime;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,7 +25,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @ToString
 public class Planter {
 	@Id
@@ -56,6 +57,9 @@ public class Planter {
 	
 	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "planters")
 	private Set<Plant> Plants;
+
+
+
 
 
 }
