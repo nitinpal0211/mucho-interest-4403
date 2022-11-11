@@ -1,12 +1,15 @@
 package com.masai.model;
 
+import java.util.Set;
 import java.time.LocalDateTime;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -49,17 +52,15 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
-//	@OneToMany(cascade= CascadeType.ALL)
-//	Seed Seeds;
-//	
-//	@OneToMany(cascade= CascadeType.ALL)
-//	Plant Plants;
+	@ManyToMany(cascade= CascadeType.ALL)
+	 private Set<Seed> seeds;
+	
+	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "planters")
+	private Set<Plant> Plants;
 
-	public Integer getPlanterId() {
-		// TODO Auto-generated method stub
-		this.planterId = planterId;
-		return planterId;
-	}
+
+
+
 
 }
 
