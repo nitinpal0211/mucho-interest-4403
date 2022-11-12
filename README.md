@@ -52,10 +52,15 @@ Before running the API server, we should update the database config inside the a
 Update the port number, username and password as per your local database config.
 
    server.port=8888
+   
    spring.datasource.url=jdbc:mysql://localhost:3306/moviesdb
+   
    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+   
    spring.datasource.username=**mysql username**
+   
    spring.datasource.password=**YourPassword**
+   
    spring.jpa.hibernate.ddl-auto=update
 
 
