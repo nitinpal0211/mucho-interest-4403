@@ -64,9 +64,9 @@ public class Planter {
 	private List<Plant> Plants;
 
 
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
-    private Orders placeorder;
+	
+//	@ManyToOne(cascade = CascadeType.ALL)
+//    private Orders placeorder;
 
 
 

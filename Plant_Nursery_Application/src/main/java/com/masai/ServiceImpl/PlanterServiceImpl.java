@@ -6,9 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.Exceptions.CustomerException;
+import com.masai.Exceptions.LoginException;
 import com.masai.Exceptions.PlanterException;
+import com.masai.model.CurrentAdminSession;
 import com.masai.model.Planter;
+import com.masai.Repository.AdminDao;
+import com.masai.Repository.AdminSessionDao;
 import com.masai.Repository.PlanterDao;
+import com.masai.Repository.SessionDao;
 import com.masai.Service.PlanterService;
 
 @Service
@@ -16,10 +22,25 @@ public class PlanterServiceImpl implements PlanterService{
 
 	@Autowired
 	private PlanterDao planterDao;
+	@Autowired
+	private SessionDao sessionDao;
+	
+	@Autowired
+	private AdminDao adminDao;
+	
+	@Autowired
+	private AdminSessionDao adminSessionDao;
 	
 	@Override
-	public Planter addPlanter(Planter planter) throws PlanterException {
+	public Planter addPlanter(Planter planter,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
+		
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
 		
 	   Planter aPlanter = planterDao.save(planter);
 	  
@@ -32,8 +53,16 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public Planter updatePlanter(Planter planter) throws PlanterException {
+	public Planter updatePlanter(Planter planter,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
+		
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
+		
 		Integer planterId = planter.getPlanterId();
 		
 		Optional<Planter> uPlanter = planterDao.findById(planterId);		
@@ -48,8 +77,15 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public Planter deletePlanter(Integer planterId) throws PlanterException {
+	public Planter deletePlanter(Integer planterId,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
+		
 		
 		Optional<Planter> found = planterDao.findById(planterId);		
 		
@@ -64,9 +100,15 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public Planter viewPlanter(Integer planterId) throws PlanterException {
+	public Planter viewPlanter(Integer planterId,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
 		
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
 		
 		Optional<Planter> found = planterDao.findById(planterId);		
 		
@@ -77,8 +119,15 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public List<Planter> viewPlanter(String planterShape) throws PlanterException {
+	public List<Planter> viewPlanter(String planterShape,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
+		
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
         List<Planter> planteraByShape;
 		
         planteraByShape = planterDao.findByPlanterShape(planterShape);
@@ -90,8 +139,14 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public List<Planter> viewAllPlanters() throws PlanterException {
+	public List<Planter> viewAllPlanters(String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
 		List<Planter> allPlanters;
 		allPlanters = planterDao.findAll();
 		
@@ -102,9 +157,19 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public List<Planter> viewAllPlanters(Double minCost, Double maxCost) throws PlanterException {
+
+	public List<Planter> viewAllPlanters(Double minCost, Double maxCost,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
-		List<Planter> findPlanterBeetween = planterDao.findByPlanterCostBetween(minCost, maxCost);
+		
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
+		
+		if(loggedAdmin==null)
+		{
+			throw new LoginException("Invalid admin key ,you are not admin");
+		}
+		List<Planter> findPlanterBeetween;
+		findPlanterBeetween = planterDao.findByPlanterCostBetween(minCost, maxCost);
+
 		
 		if(findPlanterBeetween.size()!=0)
 		      return findPlanterBeetween;
