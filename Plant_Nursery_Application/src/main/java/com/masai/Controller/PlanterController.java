@@ -81,12 +81,10 @@ public class PlanterController {
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}
 	
-	@GetMapping("/all/range")
-	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@RequestParam Double minCost,@RequestParam Double maxCost) throws PlanterException{
+	@GetMapping("/all/range/{min}/{max}")
+	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@PathVariable("min") Double min,@PathVariable("max") Double max) throws PlanterException{
 		   
-		List<Planter> allPlanters = planterService.
-			
-		viewAllPlanters(minCost, maxCost);	
+		List<Planter> allPlanters = planterService.viewAllPlanters(min, max);	
 
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}

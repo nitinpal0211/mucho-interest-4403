@@ -102,10 +102,9 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
-	public List<Planter> viewAllPlanters(double minCost, double maxCost) throws PlanterException {
+	public List<Planter> viewAllPlanters(Double minCost, Double maxCost) throws PlanterException {
 		// TODO Auto-generated method stub
-		List<Planter> findPlanterBeetween;
-		findPlanterBeetween = planterDao.findByPlanterCostBetween(minCost, maxCost);
+		List<Planter> findPlanterBeetween = planterDao.findByPlanterCostBetween(minCost, maxCost);
 		
 		if(findPlanterBeetween.size()!=0)
 		      return findPlanterBeetween;

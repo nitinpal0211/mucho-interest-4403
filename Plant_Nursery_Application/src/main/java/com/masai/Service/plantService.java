@@ -15,10 +15,10 @@ public interface plantService {
 
 	public Plant updatePlant(Plant plant,String key) throws PlantException,LoginException;
 	public Plant deletePlant(Integer plantId,String key) throws PlantException,LoginException;
-	public Plant viewPlantById(Integer plantId) throws PlantException;
-	public Plant viewPlantByCommonName(String name) throws PlantException;
-	public List<Plant> viewAllPlant() throws PlantException;
-	public List<Plant> viewAllPlantByTypeOfPlant(String type) throws PlantException;
+	public Plant viewPlantById(Integer plantId,String key) throws PlantException,LoginException;
+	public Plant viewPlantByCommonName(String name,String key) throws PlantException,LoginException;
+	public List<Plant> viewAllPlant(String key) throws PlantException,LoginException;
+	public List<Plant> viewAllPlantByTypeOfPlant(String type,String key) throws PlantException,LoginException;
 	
 	
 }
