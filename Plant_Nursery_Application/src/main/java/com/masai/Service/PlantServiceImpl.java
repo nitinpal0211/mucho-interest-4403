@@ -6,20 +6,38 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.Exceptions.CustomerException;
+import com.masai.Exceptions.LoginException;
 import com.masai.Exceptions.PlantException;
 import com.masai.Repository.PlantDao;
+import com.masai.Repository.SessionDao;
+import com.masai.model.CurrentUserSession;
 import com.masai.model.Plant;
 @Service
 public class PlantServiceImpl implements plantService {
 
 	@Autowired
 	private PlantDao pdao;
+	@Autowired
+	private SessionDao sessionDao;
 	
 	@Override
-	public Plant addPlant(Plant plant) throws PlantException {
+	
+	public Plant addPlant(Plant plant,String key) throws PlantException,LoginException {
+		
+		
+CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key to add a plant...");
+		}
+		
 		Plant p = pdao.findByCommonName(plant.getCommonName());
 		if(p==null) {
+			
 			Plant savePlant = pdao.save(plant);
+			System.out.println("ok......==");
 			return savePlant;
 		}else {
 			throw new PlantException("Plant already exists...");
@@ -31,7 +49,15 @@ public class PlantServiceImpl implements plantService {
 	}
 
 	@Override
-	public Plant updatePlant(Plant plant) throws PlantException {
+	public Plant updatePlant(Plant plant,String key) throws PlantException ,LoginException{
+		
+       CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key to update a plant...");
+		}
+		
 		Optional<Plant> opt = pdao.findById(plant.getPlaintId());
 		if(opt.isPresent()) {
 			
@@ -43,8 +69,17 @@ public class PlantServiceImpl implements plantService {
 	}
 
 	@Override
-	public Plant deletePlant(Integer plantId) throws PlantException {
-	  Optional<Plant> opt = pdao.findById(plantId);
+	public Plant deletePlant(Integer plantId,String key) throws PlantException,LoginException {
+	  
+        CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key to delete a Plant...");
+		}
+		
+		
+		Optional<Plant> opt = pdao.findById(plantId);
 	  if(opt.isPresent()) {
 		  Plant p = opt.get();
 		  pdao.delete(p);

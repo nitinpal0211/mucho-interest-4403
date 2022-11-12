@@ -1,5 +1,6 @@
 package com.masai.model;
 
+import java.util.List;
 import java.util.Set;
 import java.time.LocalDateTime;
 
@@ -53,11 +54,15 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
-//	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "seedPlanters")
-//	 private Set<Seed> seeds;
-//	
-//	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "planters")
-//	private Set<Plant> Plants;
+
+	
+	@OneToMany(cascade= CascadeType.ALL,mappedBy = "seedPlanter")
+	 private List<Seed> seeds;
+	
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "planter")
+	private List<Plant> Plants;
+
 
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
