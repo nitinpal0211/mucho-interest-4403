@@ -20,7 +20,9 @@ public interface PlanterService {
 
 	public List<Planter> viewAllPlanters(String key) throws PlanterException, LoginException;
 
+
 	public List<Planter> viewAllPlanters(Double minCost, Double maxCost,String key) throws PlanterException, LoginException;
+
 
 	
 }

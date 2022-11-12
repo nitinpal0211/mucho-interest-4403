@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.Exceptions.CustomerException;
+import com.masai.Exceptions.LoginException;
 import com.masai.Exceptions.SeedException;
 import com.masai.Service.SeedService;
 import com.masai.model.Seed;
@@ -27,14 +28,14 @@ public class SeedController {
 	private SeedService sService;
 	
 	@PostMapping("/seed/{key}")
-	public ResponseEntity<Seed> addSeedHandler(@RequestBody Seed seed,@PathVariable("key")String key) throws SeedException,CustomerException{
+	public ResponseEntity<Seed> addSeedHandler(@RequestBody Seed seed,@PathVariable("key")String key) throws SeedException,CustomerException, LoginException{
 		
 		Seed s = sService.addSeed(seed,key);
 		return new ResponseEntity<Seed>(s,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/seed/{key}")
-	public ResponseEntity<Seed> updateSeedHandler(@RequestBody Seed seed,@PathVariable("key") String key) throws SeedException, CustomerException{
+	public ResponseEntity<Seed> updateSeedHandler(@RequestBody Seed seed,@PathVariable("key") String key) throws SeedException, CustomerException, LoginException{
 		Seed s = sService.updateSeed(seed, key);
 		return new ResponseEntity<Seed>(s,HttpStatus.ACCEPTED);
 	}
@@ -42,21 +43,21 @@ public class SeedController {
 	
 
 	@DeleteMapping("/seed/{id}/{key}")
-	public ResponseEntity<Seed> deleteSeedByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws SeedException, CustomerException{
+	public ResponseEntity<Seed> deleteSeedByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws SeedException, CustomerException, LoginException{
 		Seed seed = sService.deleteSeed(id, key);
 		return new ResponseEntity<Seed>(seed,HttpStatus.OK);
 	}
 	
-	@GetMapping("/viewSeedById/{id}")
-	public ResponseEntity<Seed> viewSeedById(@PathVariable("id") Integer id) throws SeedException{
-		Seed seeds = sService.viewSeed(id);
+	@GetMapping("/viewSeedById/{id}/{key}")
+	public ResponseEntity<Seed> viewSeedById(@PathVariable("id") Integer id,@PathVariable("key") String key) throws SeedException, LoginException{
+		Seed seeds = sService.viewSeed(id,key);
 		return new ResponseEntity<Seed>(seeds,HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/viewSeedByType/{type}")
-	public ResponseEntity<List<Seed>> viewAllSeedByType(@PathVariable("type") String type) throws SeedException{
+	@GetMapping("/viewSeedByType/{type}/{key}")
+	public ResponseEntity<List<Seed>> viewAllSeedByType(@PathVariable("type") String type,@PathVariable("key") String key) throws SeedException, LoginException{
 		
-		List<Seed> seeds = sService.viewAllSeed(type);
+		List<Seed> seeds = sService.viewAllSeed(type,key);
 		return new ResponseEntity<List<Seed>>(seeds,HttpStatus.ACCEPTED);
 	}
 

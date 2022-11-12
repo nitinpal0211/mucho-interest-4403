@@ -82,10 +82,12 @@ public class PlanterController {
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}
 	
+
 	@GetMapping("/all/range/{key}")
 	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@RequestParam Double minCost,@RequestParam Double maxCost,@PathVariable("key") String key) throws PlanterException, LoginException{
 		   
 		List<Planter> allPlanters = planterService.viewAllPlanters(minCost, maxCost,key);	
+
 
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}

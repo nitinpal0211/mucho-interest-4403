@@ -157,6 +157,7 @@ public class PlanterServiceImpl implements PlanterService{
 	}
 
 	@Override
+
 	public List<Planter> viewAllPlanters(Double minCost, Double maxCost,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
 		
@@ -168,6 +169,7 @@ public class PlanterServiceImpl implements PlanterService{
 		}
 		List<Planter> findPlanterBeetween;
 		findPlanterBeetween = planterDao.findByPlanterCostBetween(minCost, maxCost);
+
 		
 		if(findPlanterBeetween.size()!=0)
 		      return findPlanterBeetween;

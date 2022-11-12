@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.CustomerException;
+import com.masai.Exceptions.LoginException;
 import com.masai.Exceptions.SeedException;
+import com.masai.Repository.AdminSessionDao;
 import com.masai.Repository.SeedDao;
 import com.masai.Repository.SessionDao;
 import com.masai.Service.SeedService;
+import com.masai.model.CurrentAdminSession;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Seed;
 
@@ -20,14 +23,15 @@ public class SeedServiceImpl implements SeedService {
 	private SeedDao sdao;
 	@Autowired
 	private SessionDao sessionDao;
-
+	@Autowired
+	private AdminSessionDao adminsessioDao;
 	@Override
-	public Seed addSeed(Seed seed,String key) throws SeedException, CustomerException {
-    CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+	public Seed addSeed(Seed seed,String key) throws SeedException, LoginException {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		
 		if(loggeduser==null)
 		{
-			throw new CustomerException("Please Enter a Valid Key to add a seed.");
+			throw new LoginException("Please Enter a Valid Key ");
 		}
 		
 		Seed p = sdao.findByCommonName(seed.getCommonName());
@@ -40,14 +44,14 @@ public class SeedServiceImpl implements SeedService {
 	}
 
 	@Override
-	public Seed updateSeed(Seed seed,String key) throws SeedException, CustomerException {
+	public Seed updateSeed(Seed seed,String key) throws SeedException, LoginException {
 		
-		   CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
-			
-			if(loggeduser==null)
-			{
-				throw new CustomerException("Please Enter a Valid Key to update a Seed...");
-			}else {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key ");
+		}else {
 				Optional<Seed> opt = sdao.findById(seed.getSeedId());
 				if(opt.isPresent()) {
 					Seed updateSeed=sdao.save(seed);
@@ -60,13 +64,14 @@ public class SeedServiceImpl implements SeedService {
 	}
 
 	@Override
-	public Seed deleteSeed(Integer seedId,String key) throws SeedException, CustomerException {
-         CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+	public Seed deleteSeed(Integer seedId,String key) throws SeedException, LoginException {
+         CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		
 		if(loggeduser==null)
 		{
-			throw new CustomerException("Please Enter a Valid Key to delete a Seed..");
-		}else {
+			throw new LoginException("Please Enter a Valid Key ");
+		}
+		
 			 Optional<Seed> opt = sdao.findById(seedId);
 			  if(opt.isPresent()) {
 				  Seed s= opt.get();
@@ -75,18 +80,30 @@ public class SeedServiceImpl implements SeedService {
 			  }else {
 				  throw new SeedException("No Seed found by id "+ seedId);
 			  }
-		}
+		
 
 	 
 	}
 
 	@Override
-	public Seed viewSeed(Integer seedId) throws SeedException {
+	public Seed viewSeed(Integer seedId,String key) throws SeedException, LoginException {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key ");
+		}
 		return sdao.findById(seedId).orElseThrow(()-> new SeedException("No seed found with id "+ seedId));
 	}
 
 	@Override
-	public Seed viewSeed(String name) throws SeedException {
+	public Seed viewSeed(String name,String key) throws SeedException, LoginException {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key ");
+		}
        Seed seed = sdao.findByCommonName(name);
        if(seed==null) {
     	   throw new SeedException("No seed found with Common Name "+ name);
@@ -96,7 +113,14 @@ public class SeedServiceImpl implements SeedService {
 	}
 
 	@Override
-	public List<Seed> viewAllSeed() throws SeedException {
+	public List<Seed> viewAllSeed(String key) throws SeedException,LoginException {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key ");
+		}
+         
 		List<Seed> seeds= sdao.findAll();
 		if(seeds.size()>0) {
 			return seeds;
@@ -107,7 +131,13 @@ public class SeedServiceImpl implements SeedService {
 	}
 
 	@Override
-	public List<Seed> viewAllSeed(String typeOfSeed) throws SeedException {
+	public List<Seed> viewAllSeed(String typeOfSeed,String key) throws SeedException, LoginException {
+CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new LoginException("Please Enter a Valid Key ");
+		}
 		List<Seed> seeds = sdao.findAllBytypeOfSeeds(typeOfSeed);
 		if(seeds.size()>0) {
 			return seeds;

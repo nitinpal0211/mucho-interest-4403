@@ -48,29 +48,29 @@ public class PlantController {
 	}
 	
 	
-	@GetMapping("/getPlantById/{id}")
-	public ResponseEntity<Plant> viewPlantByIdHandler(@PathVariable("id") Integer id) throws PlantException{
-		Plant plant = pService.viewPlantById(id);
+	@GetMapping("/getPlantById/{id}/{key}")
+	public ResponseEntity<Plant> viewPlantByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws PlantException, LoginException{
+		Plant plant = pService.viewPlantById(id,key);
 		return new ResponseEntity<Plant>(plant,HttpStatus.OK);
 	}
 	
-	@GetMapping("/getPlantByName/{name}")
-	public ResponseEntity<Plant> viewPlantByCommonNameHandler(@PathVariable("name") String name) throws PlantException{
-		Plant plant = pService.viewPlantByCommonName(name);
+	@GetMapping("/getPlantByName/{name}/{key}")
+	public ResponseEntity<Plant> viewPlantByCommonNameHandler(@PathVariable("name") String name,@PathVariable("key") String key) throws PlantException, LoginException{
+		Plant plant = pService.viewPlantByCommonName(name,key);
 		return new ResponseEntity<Plant>(plant,HttpStatus.OK);
 	}
 	
 	
-	@GetMapping("/allPlants")
-	public ResponseEntity<List<Plant>> viewAllPlantsHandler() throws PlantException{
-		List<Plant> plist = pService.viewAllPlant();
+	@GetMapping("/allPlants/{key}")
+	public ResponseEntity<List<Plant>> viewAllPlantsHandler(@PathVariable("key") String key) throws PlantException, LoginException{
+		List<Plant> plist = pService.viewAllPlant(key);
 		return new ResponseEntity<List<Plant>>(plist,HttpStatus.OK);
 	}
 	
 	
-	@GetMapping("/allPlantByType/{type}")
-	public ResponseEntity<List<Plant>> viewAllPlantsByTypeOfPlant(@PathVariable("type") String type) throws PlantException{
-		List<Plant> plist = pService.viewAllPlantByTypeOfPlant(type);
+	@GetMapping("/allPlantByType/{type}/{key}")
+	public ResponseEntity<List<Plant>> viewAllPlantsByTypeOfPlant(@PathVariable("type") String type,@PathVariable("key") String key) throws PlantException, LoginException{
+		List<Plant> plist = pService.viewAllPlantByTypeOfPlant(type,key);
 		return new ResponseEntity<List<Plant>>(plist,HttpStatus.OK);
 	}
 }
