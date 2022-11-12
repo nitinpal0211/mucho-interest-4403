@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,7 +57,9 @@ public class Seed {
 	@Min(value = 1,message = "seed/packet value should be more then 0")
 	private Integer seedsPerPacket;
 	
+
      	@JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
      private Seed seedPlanter;
+
 }

@@ -28,7 +28,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Plant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,12 +58,14 @@ public class Plant {
 	private Integer plantStock;
 	@Min(value=1 , message = "Plant cost should be more than 0.0")
 	private Double plantCost;
+
 	
      @JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Planter planter;
 	
 	
+
 	
 
 }

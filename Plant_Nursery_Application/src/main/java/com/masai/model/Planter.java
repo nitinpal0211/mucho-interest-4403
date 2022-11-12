@@ -28,7 +28,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Planter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -55,6 +54,7 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
+
 	
 	@OneToMany(cascade= CascadeType.ALL,mappedBy = "seedPlanter")
 	 private List<Seed> seeds;
@@ -64,6 +64,9 @@ public class Planter {
 	private List<Plant> Plants;
 
 
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+    private Orders placeorder;
 
 
 
