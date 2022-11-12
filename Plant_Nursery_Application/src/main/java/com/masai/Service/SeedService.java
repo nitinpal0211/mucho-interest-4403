@@ -8,7 +8,7 @@ import com.masai.model.Seed;
 
 public interface SeedService {
 	
-	public Seed addSeed(Seed seed) throws SeedException;
+	public Seed addSeed(Seed seed,String key) throws SeedException, CustomerException;
 	public Seed updateSeed(Seed seed,String key) throws SeedException, CustomerException;
 	public Seed deleteSeed(Integer seedId,String Key) throws SeedException, CustomerException;
 	public Seed viewSeed(Integer seedId) throws SeedException;

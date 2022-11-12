@@ -26,10 +26,10 @@ public class SeedController {
 	@Autowired
 	private SeedService sService;
 	
-	@PostMapping("/seed")
-	public ResponseEntity<Seed> addSeedHandler(@RequestBody Seed seed) throws SeedException{
+	@PostMapping("/seed/{key}")
+	public ResponseEntity<Seed> addSeedHandler(@RequestBody Seed seed,@PathVariable("key")String key) throws SeedException,CustomerException{
 		
-		Seed s = sService.addSeed(seed);
+		Seed s = sService.addSeed(seed,key);
 		return new ResponseEntity<Seed>(s,HttpStatus.CREATED);
 	}
 	
@@ -48,12 +48,12 @@ public class SeedController {
 	}
 	
 	@GetMapping("/viewSeedById/{id}")
-	public ResponseEntity<List<Seed>> viewSeedById(@PathVariable("id") Integer id) throws SeedException{
-		List<Seed> seeds = sService.viewAllSeed();
-		return new ResponseEntity<List<Seed>>(seeds,HttpStatus.ACCEPTED);
+	public ResponseEntity<Seed> viewSeedById(@PathVariable("id") Integer id) throws SeedException{
+		Seed seeds = sService.viewSeed(id);
+		return new ResponseEntity<Seed>(seeds,HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/viewSeedByType/{Type}")
+	@GetMapping("/viewSeedByType/{type}")
 	public ResponseEntity<List<Seed>> viewAllSeedByType(@PathVariable("type") String type) throws SeedException{
 		
 		List<Seed> seeds = sService.viewAllSeed(type);

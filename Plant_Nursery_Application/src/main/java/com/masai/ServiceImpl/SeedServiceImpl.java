@@ -22,14 +22,20 @@ public class SeedServiceImpl implements SeedService {
 	private SessionDao sessionDao;
 
 	@Override
-	public Seed addSeed(Seed seed) throws SeedException {
+	public Seed addSeed(Seed seed,String key) throws SeedException, CustomerException {
+    CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
+		
+		if(loggeduser==null)
+		{
+			throw new CustomerException("Please Enter a Valid Key to add a seed.");
+		}
 		
 		Seed p = sdao.findByCommonName(seed.getCommonName());
 		if(p==null) {
 			Seed saveSeed = sdao.save(seed);
 			return saveSeed;
 		}else {
-			throw new SeedException("Plant already exists...");
+			throw new SeedException("seed already exists...");
 		}
 	}
 

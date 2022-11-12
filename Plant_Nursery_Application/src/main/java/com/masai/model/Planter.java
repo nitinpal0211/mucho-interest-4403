@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,8 +55,10 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
+	
 	@OneToMany(cascade= CascadeType.ALL,mappedBy = "seedPlanter")
 	 private List<Seed> seeds;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "planter")
 	private List<Plant> Plants;
