@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.Exceptions.LoginException;
 import com.masai.Exceptions.PlanterException;
 import com.masai.model.Planter;
 import com.masai.Service.PlanterService;
@@ -29,64 +30,62 @@ public class PlanterController {
 	private PlanterService planterService;
 	
 	
-	@PostMapping("/add")
-	public ResponseEntity<Planter> addNewPlanter(@Valid @RequestBody Planter planter) throws PlanterException{
+	@PostMapping("/add/{key}")
+	public ResponseEntity<Planter> addNewPlanter(@Valid @RequestBody Planter planter,@PathVariable("key") String key) throws PlanterException, LoginException{
 		
 		Planter addPlanter = null;
 		
-		addPlanter = planterService.addPlanter(planter);
+		addPlanter = planterService.addPlanter(planter,key);
 
 		return new ResponseEntity<Planter>(addPlanter, HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/delete/{planterId}")
-	public ResponseEntity<Planter> deletePlanter(@PathVariable Integer planterId )throws PlanterException{
+	@DeleteMapping("/delete/{planterId}/{key}")
+	public ResponseEntity<Planter> deletePlanter(@PathVariable Integer planterId,@PathVariable("key") String key )throws PlanterException, LoginException{
 
 		Planter deletedPlanter = null;
 		
-		deletedPlanter = planterService.deletePlanter(planterId);
+		deletedPlanter = planterService.deletePlanter(planterId,key);
 		
 		return new ResponseEntity<Planter>(deletedPlanter, HttpStatus.OK);
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Planter> updatePlanter(@RequestBody Planter planter) throws  PlanterException{
+	@PutMapping("/update/{key}")
+	public ResponseEntity<Planter> updatePlanter(@RequestBody Planter planter,@PathVariable("key") String key) throws  PlanterException, LoginException{
 
 		Planter updatedPlanter = null;
-		updatedPlanter = planterService.updatePlanter(planter);
+		updatedPlanter = planterService.updatePlanter(planter,key);
 
 		return new ResponseEntity<Planter>(updatedPlanter, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/byID/{planterId}")
-	public ResponseEntity<Planter> getPlanterById(@PathVariable Integer planterId)throws PlanterException{
+	@GetMapping("/byID/{planterId}/{key}")
+	public ResponseEntity<Planter> getPlanterById(@PathVariable Integer planterId,@PathVariable("key") String key)throws PlanterException, LoginException{
 		
-		Planter specificPlanter = planterService.viewPlanter(planterId);
+		Planter specificPlanter = planterService.viewPlanter(planterId,key);
 
 		return new ResponseEntity<Planter>(specificPlanter, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{planterShape}")
-	public ResponseEntity<List<Planter>> viewPlanterByShape(@PathVariable String planterShape) throws PlanterException{
+	@GetMapping("/{planterShape}/{key}")
+	public ResponseEntity<List<Planter>> viewPlanterByShape(@PathVariable String planterShape,@PathVariable("key") String key) throws PlanterException, LoginException{
 
-		List<Planter> plantersByShape = planterService.viewPlanter(planterShape);
+		List<Planter> plantersByShape = planterService.viewPlanter(planterShape,key);
 
 		return new ResponseEntity<List<Planter>>(plantersByShape, HttpStatus.OK);
 	}
-	@GetMapping("/all")
-	public ResponseEntity<List<Planter>> viewAllPlanters() throws PlanterException{
+	@GetMapping("/all/{key}")
+	public ResponseEntity<List<Planter>> viewAllPlanters(@PathVariable("key") String key) throws PlanterException, LoginException{
 
-		List<Planter> allPlanters = planterService.viewAllPlanters();
+		List<Planter> allPlanters = planterService.viewAllPlanters(key);
 		
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}
 	
-	@GetMapping("/all/range")
-	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@RequestParam Double minCost,@RequestParam Double maxCost) throws PlanterException{
+	@GetMapping("/all/range/{key}")
+	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@RequestParam Double minCost,@RequestParam Double maxCost,@PathVariable("key") String key) throws PlanterException, LoginException{
 		   
-		List<Planter> allPlanters = planterService.
-			
-		viewAllPlanters(minCost, maxCost);	
+		List<Planter> allPlanters = planterService.viewAllPlanters(minCost, maxCost,key);	
 
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}

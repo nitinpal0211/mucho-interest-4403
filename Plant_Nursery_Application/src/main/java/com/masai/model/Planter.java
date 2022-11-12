@@ -52,7 +52,7 @@ public class Planter {
 	private Integer planterStock;
 	
 	@Min(value=1 , message = "Planter cost cannot be 0")
-	private Integer planterCost;
+	private Double planterCost;
 	
 
 	
