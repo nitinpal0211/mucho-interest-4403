@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class Customer {
 	@Size(min=3,max=20,message="please enter your name with character 3 and maximum character is 8.")
 	private String customerName;
 	@Email(message = "please enter a valid email")
+	@Column(unique = true)
 	private String customerEmail;
 	@Size(min=3,max=20,message="please enter your username")
 	private String customerUserName;

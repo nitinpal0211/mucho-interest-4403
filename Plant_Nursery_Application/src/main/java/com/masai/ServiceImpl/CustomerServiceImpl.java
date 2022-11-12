@@ -8,10 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.CustomerException;
 import com.masai.Repository.CustomerDao;
+import com.masai.Repository.PlantDao;
+import com.masai.Repository.PlanterDao;
+import com.masai.Repository.SeedDao;
 import com.masai.Repository.SessionDao;
 import com.masai.Service.CustomerService;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
+import com.masai.model.Plant;
+import com.masai.model.Planter;
+import com.masai.model.Seed;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -21,6 +27,15 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	private SessionDao sessionDao;
+	
+	@Autowired
+	private PlanterDao planterDao;
+	
+	@Autowired
+	private SeedDao seedDao;
+	
+	@Autowired
+	private PlantDao plantDao;
 
 	@Override
 	public Customer addCustomer(Customer customer) throws CustomerException {
@@ -81,21 +96,49 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customer viewCustomer(int customerId) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Plant> viewAllPlants(String Key) throws CustomerException {
+		
+        CurrentUserSession  loggeduser= sessionDao.findByUuid(Key);
+		
+		if(loggeduser==null)
+		{
+			throw new CustomerException("Please Enter a Valid Key to update a customer.");
+		}
+		
+		 return plantDao.findAll();
+		
+		
 	}
 
 	@Override
-	public List<Customer> viewAllCustomers() throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Planter> viewAllPlanters(String Key) throws CustomerException {
+
+
+        CurrentUserSession  loggeduser= sessionDao.findByUuid(Key);
+		
+		if(loggeduser==null)
+		{
+			throw new CustomerException("Please Enter a Valid Key to update a customer.");
+		}
+		
+		 return planterDao.findAll();
+		
 	}
 
 	@Override
-	public Customer validateCustomer(String userName, String password) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Seed> viewAllSeeds(String Key) throws CustomerException {
+		
+        CurrentUserSession  loggeduser= sessionDao.findByUuid(Key);
+		
+		if(loggeduser==null)
+		{
+			throw new CustomerException("Please Enter a Valid Key to update a customer.");
+		}
+		
+		 return seedDao.findAll(); 
+		
 	}
+
+	
 	
 }

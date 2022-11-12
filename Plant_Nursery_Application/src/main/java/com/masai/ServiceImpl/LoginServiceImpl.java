@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import com.masai.Exceptions.CustomerException;
 import com.masai.Exceptions.LoginException;
 import com.masai.Repository.AdminDao;
+import com.masai.Repository.AdminSessionDao;
 import com.masai.Repository.CustomerDao;
 import com.masai.Repository.SessionDao;
 import com.masai.Service.LoginService;
 import com.masai.model.Admin;
 import com.masai.model.AdminDTO;
+import com.masai.model.CurrentAdminSession;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 import com.masai.model.CustomerDTO;
@@ -31,6 +33,10 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	private AdminDao adminDao;
+	
+	@Autowired
+	private AdminSessionDao adminSessionDao;
+	
 	
 	@Override
 	public String logIntoAccount(CustomerDTO dto) throws LoginException {
@@ -57,7 +63,7 @@ public class LoginServiceImpl implements LoginService {
 			
 			sessionDao.save(cus);
 			
-			return user.toString();
+			return "Login succesfully , Unique key :  "+key+" details : "+user.toString();
 		}
 		else
 		{
@@ -90,7 +96,7 @@ public class LoginServiceImpl implements LoginService {
 			throw new LoginException("Please Enter valid Email");
 		}
 		
-		Optional<CurrentUserSession> opt = sessionDao.findById(user.getAdminId());
+		Optional<CurrentAdminSession> opt = adminSessionDao.findById(user.getAdminId());
 		
 		if(opt.isPresent())
 		{
@@ -101,11 +107,11 @@ public class LoginServiceImpl implements LoginService {
 		{
 			String key = RandomString.make(7);
 			
-			CurrentUserSession cus = new CurrentUserSession(user.getAdminId(),key,LocalDateTime.now());
+			CurrentAdminSession cus = new CurrentAdminSession(user.getAdminId(),key,LocalDateTime.now());
 			
-			sessionDao.save(cus);
+			adminSessionDao.save(cus);
 			
-			return user.toString();
+		    return "Login succesfully , Unique key :  "+key+" details : "+user.toString();
 		}
 		else
 		{
@@ -116,14 +122,14 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String logOutAdminFromAccount(String key) throws LoginException {
 
-		 CurrentUserSession cus =	sessionDao.findByUuid(key);
+		CurrentAdminSession cus =	adminSessionDao.findByUuid(key);
 	     
 	     if(cus==null)
 	     {
 	    	 throw new LoginException("Admin not Login with this Email.");
 	     }
 	     
-	     sessionDao.delete(cus);
+	     adminSessionDao.delete(cus);
 	     
 	     return "Logged out Successfully.";
 	}

@@ -1,4 +1,4 @@
-package com.masai.ServiceImpl;
+ package com.masai.ServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.masai.Exceptions.CustomerException;
 import com.masai.Repository.AdminDao;
+import com.masai.Repository.AdminSessionDao;
 import com.masai.Repository.CustomerDao;
 import com.masai.Repository.SessionDao;
 import com.masai.Service.AdminService;
+import com.masai.model.CurrentAdminSession;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 
@@ -26,14 +28,17 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDao adminDao;
 	
+	@Autowired
+	private AdminSessionDao adminSessionDao;
+	
 	@Override
 	public Customer addCustomer(Customer customer, String key) throws CustomerException {
 		
-		CurrentUserSession  loggedAdmin= sessionDao.findByUuid(key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
 		
 		if(loggedAdmin==null)
 		{
-			throw new CustomerException("This key admin not login , please login first.");
+			throw new CustomerException("Invalid admin key ,you are not admin");
 		}
 		
         Customer existingCustomer = customerDao.findByCustomerEmail(customer.getCustomerEmail());
@@ -50,7 +55,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Customer upadateCustomer(Customer tenant, String key) throws CustomerException {
         
-		CurrentUserSession  loggedAdmin= sessionDao.findByUuid(key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
 		
 		if(loggedAdmin==null)
 		{
@@ -71,7 +76,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Customer deleteCustomer(Customer tenant, String Key) throws CustomerException {
 		
-        CurrentUserSession  loggedAdmin= sessionDao.findByUuid(Key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(Key);
 		
 		if(loggedAdmin==null)
 		{
@@ -96,7 +101,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Customer viewCustomer(Integer customerId, String key) throws CustomerException {
 		
-		 CurrentUserSession  loggedAdmin= sessionDao.findByUuid(key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
 			
 			if(loggedAdmin==null)
 			{
@@ -118,7 +123,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public List<Customer> viewAllCustomers(String key) throws CustomerException {
 		 
-		     CurrentUserSession  loggedAdmin= sessionDao.findByUuid(key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
 			
 			if(loggedAdmin==null)
 			{
@@ -140,7 +145,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Customer validateCustomer(String userName, String password, String key) throws CustomerException {
 
-		CurrentUserSession  loggedAdmin= sessionDao.findByUuid(key);
+		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(key);
 		
 		if(loggedAdmin==null)
 		{

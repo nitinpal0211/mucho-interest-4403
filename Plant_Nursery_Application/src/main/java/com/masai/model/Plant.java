@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Plant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,10 +38,10 @@ public class Plant {
 	private String plantDescription;
 	private Integer plantStock;
 	private Double plantCost;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-
-	private Set<Planter> planters;
+//	
+//	@JsonIgnore
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	private Set<Planter> planters;
 	
 
 }

@@ -35,6 +35,19 @@ public class GlobalLoginAndCustomerExceptionHandler {
 		return new ResponseEntity<LoginAndCustomerErrorDetails>(error , HttpStatus.BAD_REQUEST);
 	}
 	
+	
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<LoginAndCustomerErrorDetails> myExceptionHandler(OrderException ce,WebRequest req)
+	{
+		LoginAndCustomerErrorDetails error = new LoginAndCustomerErrorDetails();
+		error.setTimeStamp(LocalDateTime.now());
+		error.setMessage(ce.getMessage());
+		error.setDescription(req.getDescription(false));
+		
+		return new ResponseEntity<LoginAndCustomerErrorDetails>(error , HttpStatus.BAD_REQUEST);
+	}
+	
+	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<LoginAndCustomerErrorDetails> myExceptionHandler(MethodArgumentNotValidException ve)
 	{
