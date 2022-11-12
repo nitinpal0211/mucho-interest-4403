@@ -74,15 +74,15 @@ Link:
 
 ## Roles & Responsibilities :-
 
-All Work of Admin and Customer Management and LogIn Auth done BY [Shimbu Kumavat](github.com/Shimbhu77)
+All Work of Admin and Customer Management and LogIn Auth done BY [Shimbu Kumavat](https://github.com/Shimbhu77)
 
-All Work of Plant anagement Done By [Nitin Kumar](github.com/nitinpal0211) 
+All Work of Plant anagement Done By [Nitin Kumar](https://github.com/nitinpal0211) 
 
-All Work of Planter and Er Dia Done By [Shreyash Ahuja](github.com/loki025)
+All Work of Planter and Er Dia Done By [Shreyash Ahuja](https://github.com/loki025)
 
-All Work of Seed management Done by [Aakash Kumar](github.com/akash07032001)
+All Work of Seed management Done by [Aakash Kumar](https://github.com/akash07032001)
 
-All work of order Management Done By [Chetan Patil](github.com/Chetan8788)
+All work of order Management Done By [Chetan Patil](https://github.com/Chetan8788)
 
 ## Learning :-
 
@@ -99,13 +99,13 @@ Our code writing style became cleaner as we had to think while writing code that
 
 ## Team - Members:
 
-👤 [Nitin Kumar-Leader](github.com/nitinpal0211)
+👤 [Nitin Kumar-Leader](https://github.com/nitinpal0211)
 
-👤 [Shimbu Kumavat](github.com/Shimbhu77)
+👤 [Shimbu Kumavat](https://github.com/Shimbhu77)
 
-👤 [Shreyash Ahuja](github.com/loki025)
+👤 [Shreyash Ahuja](https://github.com/loki025)
 
-👤 [Chetan Patil](github.com/Chetan8788)
+👤 [Chetan Patil](https://github.com/Chetan8788)
 
-👤 [Aakash Kumar](github.com/akash07032001)
+👤 [Aakash Kumar](https://github.com/akash07032001)
 
