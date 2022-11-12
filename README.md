@@ -74,7 +74,7 @@ Link:
 
 ## Roles & Responsibilities :-
 
-All Work of Admin and Customer Management and LogIn Auth done BY [Shimbu Kumavat](https://github.com/Shimbhu77)
+All Work of Admin and Customer Management and LogIn Auth done BY [Shimbu Kumawat](https://github.com/Shimbhu77)
 
 All Work of Plant anagement Done By [Nitin Kumar](https://github.com/nitinpal0211) 
 
@@ -101,7 +101,7 @@ Our code writing style became cleaner as we had to think while writing code that
 
 👤 [Nitin Kumar-Leader](https://github.com/nitinpal0211)
 
-👤 [Shimbu Kumavat](https://github.com/Shimbhu77)
+👤 [Shimbu Kumawat](https://github.com/Shimbhu77)
 
 👤 [Shreyash Ahuja](https://github.com/loki025)
 
