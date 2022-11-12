@@ -94,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
 			 {
 				 
 				 Set<Planter> list= new HashSet<>();
-				 
+				 System.out.println("before1 ==========="+planter.get().getPlanterStock());
 				 if(orders.getQuantity()<=planter.get().getPlanterStock())
 				 {
 					 list.add(planter.get());
@@ -104,7 +104,7 @@ public class OrderServiceImpl implements OrderService {
 					 total=total+orders.getQuantity()*planter.get().getPlanterCost();
 				 }
 				 else throw new OrderException("Insufficient stock for planters ");
-				
+				 System.out.println("after1 **************"+planter.get().getPlanterStock());
 			 }
 			 
 			
@@ -132,7 +132,7 @@ public class OrderServiceImpl implements OrderService {
 			 {
 				 
 				 Set<Seed> list= new HashSet<>();
-				 
+				 System.out.println("before2 ==========="+seed.get().getSeedsStock());
 				 if(orders.getQuantity()<=seed.get().getSeedsStock())
 				 {
 					 list.add(seed.get());
@@ -142,13 +142,14 @@ public class OrderServiceImpl implements OrderService {
 					 total=total+orders.getQuantity()*seed.get().getSeedsCost();
 				 }
 				 else throw new OrderException("Insufficient stock for Seeds ");
-				 
+				 System.out.println("after **************"+seed.get().getSeedsStock());
 				 
 			  }
 			 
 			 orderDetails.setTotalCost(total);
-			 System.out.println("order add is end."+orderDetails);
+			 System.out.println("order add is end. *************===========*********"+orderDetails);
 			 orderDao.save(orderDetails);
+			 System.out.println("order return state. *************===========*********"+orderDetails);
 			 return orderDetails;
 			 
 		}
@@ -188,10 +189,10 @@ public class OrderServiceImpl implements OrderService {
 					  }
 					  if(orders.getQuantity()<=0)
 					  {
-						  throw new OrderException("please add one for updating the order.");
+						  throw new OrderException("please add one product for updating the order.");
 					  }
 					  orderDetails.setTransactionMode(orders.getTransactionMode());
-					  orderDetails.setQuantity(orders.getQuantity());
+					 
 					  orderDetails.setCustomerId(customer.getCustomerId());
 					  double total=0;
 					 Optional<Planter> planter =planterDao.findById(orders.getPlanterId());
@@ -259,7 +260,7 @@ public class OrderServiceImpl implements OrderService {
 						 
 						 
 					 }
-					 
+					 orderDetails.setQuantity(orders.getQuantity());
 					 orderDetails.setTotalCost(total);
 					 orderDao.save(orderDetails);
 					 return orderDetails;

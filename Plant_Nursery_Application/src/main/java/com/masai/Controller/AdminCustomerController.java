@@ -42,8 +42,8 @@ public class AdminCustomerController {
 	@Autowired
 	private PlanterService planterService;
 	
-//	@Autowired
-//	private SeedService seedService;
+	@Autowired
+	private SeedService seedService;
 	
 	@PostMapping("/customers")
 	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) throws CustomerException
@@ -73,7 +73,7 @@ public class AdminCustomerController {
 	@GetMapping("/customers/viewAllPlants/{key}")
 	public ResponseEntity<List<Plant>> viewAllPlants(@PathVariable("key") String key) throws CustomerException, PlantException
 	{
-		List<Plant> list = plantService.viewAllPlant();
+		List<Plant> list = customerService.viewAllPlants(key);
 		
 		return new ResponseEntity<List<Plant>>(list,HttpStatus.OK);
 	}
@@ -81,17 +81,17 @@ public class AdminCustomerController {
 	@GetMapping("/customers/viewAllPlanters/{key}")
 	public ResponseEntity<List<Planter>> viewAllPlanters(@PathVariable("key") String key) throws CustomerException, PlanterException
 	{
-		List<Planter> list = planterService.viewAllPlanters();
+		List<Planter> list = customerService.viewAllPlanters(key);
 		
 		return new ResponseEntity<List<Planter>>(list,HttpStatus.OK);
 	}
 	
-//	@GetMapping("/customers/viewAllSeeds/{key}")
-//	public ResponseEntity<List<Seed>> viewAllSeeds(@PathVariable("key") String key) throws CustomerException, SeedException
-//	{
-//		List<Seed> list = seedService.viewAllSeed();
-//		
-//		return new ResponseEntity<List<Seed>>(list,HttpStatus.OK);
-//	}
+	@GetMapping("/customers/viewAllSeeds/{key}")
+	public ResponseEntity<List<Seed>> viewAllSeeds(@PathVariable("key") String key) throws CustomerException, SeedException
+	{
+		List<Seed> list = customerService.viewAllSeeds(key);
+		
+		return new ResponseEntity<List<Seed>>(list,HttpStatus.OK);
+	}
 	
 }

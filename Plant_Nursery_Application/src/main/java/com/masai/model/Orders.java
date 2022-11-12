@@ -37,7 +37,7 @@ public class Orders {
 	private Integer customerId;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "placeorder")
+	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Planter> orderPlanters;
 	
 	@OneToMany(cascade = CascadeType.ALL)
