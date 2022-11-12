@@ -2,8 +2,14 @@ package com.masai.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +21,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Seed {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer seedId;
 	
 	private String commonName;
@@ -28,6 +36,7 @@ public class Seed {
 	private Double seedsCost;
 	private Integer seedsPerPacket;
 	
-	@ManyToMany()
-	private Set<Planter> seedPlanters;
+//	@JsonIgnore
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	private Set<Planter> seedPlanters;
 }

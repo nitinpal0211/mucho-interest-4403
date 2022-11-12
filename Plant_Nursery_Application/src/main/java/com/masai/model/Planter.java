@@ -10,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,7 +27,6 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Planter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
@@ -52,13 +53,15 @@ public class Planter {
 	@Min(value=1 , message = "Planter cost cannot be 0")
 	private Integer planterCost;
 	
-	@ManyToMany(cascade= CascadeType.ALL)
-	 private Set<Seed> seeds;
-	
-	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "planters")
-	private Set<Plant> Plants;
+//	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "seedPlanters")
+//	 private Set<Seed> seeds;
+//	
+//	@ManyToMany(cascade= CascadeType.ALL,mappedBy = "planters")
+//	private Set<Plant> Plants;
 
-
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
+    private Orders placeorder;
 
 
 
