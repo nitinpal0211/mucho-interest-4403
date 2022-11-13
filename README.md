@@ -1,15 +1,12 @@
-# mucho-interest-4403
+
 
 
 # Nursery Plant Application
-
+In this Application Admin can register a customer , planter ,Plant and seeds and Admin can delete all of these. A customer can register himself/herself and login and after login customer can see all present Planter, Plant and seeds and if customer want to purchase anything then customer can place a order as well.
 # Objevtive:
-We made a Backend Application to Perform CRUD Operation and Made RestFul APIs Service Using java, SpringBoot, lombok and swagger-UI for Nursery
-Plant Application. In application Customer can Buy Seeds, Planter And Plant or Customer can add Them into cart the Following Items.
-Also Admin can Manage or can do CRUD Operation On Plants, Seeds, Planters and Customers.
+The objective to create this project was to implement all things which we have learned , how to contribute in a collaborative project as a team player and face some challenges which can be occur in real time project.We made a Backend Application to perform CRUD operation and made RestFul APIs Service Using java, SpringBoot, lombok and swagger-UI for Nursery Plant Application.
 
-
-## Entity RelationShiop Diagram Of Application:
+# E-R Diagram for the application:
 
 
 
@@ -17,7 +14,9 @@ Also Admin can Manage or can do CRUD Operation On Plants, Seeds, Planters and Cu
 ![ERDiagram](https://github.com/nitinpal0211/mucho-interest-4403/blob/main/Plant_Nursery_Application/Er_And_Images/erDiagram.png?raw=true)
 
 
+# Modules:
 
+![](https://github.com/nitinpal0211/mucho-interest-4403/blob/main/Plant_Nursery_Application/Er_And_Images/Class%20Module.jpeg)
 
 ## Tech Stacks:
 
@@ -26,22 +25,23 @@ Also Admin can Manage or can do CRUD Operation On Plants, Seeds, Planters and Cu
 - Maven
 - Swagger-Ui
 - Lombok
-- MySql
+- MySQL
 - SpringData Jpa
 - Hibernate
 
 
 ## Features And Functinalities:
 
-- Admin/Customer registration and Login:
-- Customer can See or Buy Seeds, Plants and Planters
-- Customer can Add them In cart as well
+- Admin/Customer registration and Login.
 - Admin can Perform The All Crud operation on Plants,Planters,Seeds and customers or Manage them.
+- Customer can See or Buy Seeds, Plants and Planters.
+- Customer can place a order.
+
 
 ##  Backend of The Application 
 
 - For Data Security We Build SignUp - Login For customer and Admin.  
-- Stored the data In MySQL and that Can be access By only Authenticated User 
+- Stored the data In MySQL and that Can be access By only Authenticated User.
 - Proper Exception Handling 
 - Proper Input Validation 
 
@@ -51,9 +51,11 @@ You can clone this repo and start the serve on localhost
 Before running the API server, we should update the database config inside the application.properties file.
 Update the port number, username and password as per your local database config.
 
-   server.port=8888
+
+  ```
+   server.port=8888 
    
-   spring.datasource.url=jdbc:mysql://localhost:3306/moviesdb
+   spring.datasource.url=jdbc:mysql://localhost:3306/sb201db
    
    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
    
@@ -61,12 +63,19 @@ Update the port number, username and password as per your local database config.
    
    spring.datasource.password=**YourPassword**
    
-   spring.jpa.hibernate.ddl-auto=update
+   spring.jpa.hibernate.ddl-auto=update 
+   
+   spring.jpa.show-sql=true
+   
+   spring.mvc.pathmatch.matching-strategy = ANT_PATH_MATCHER
+   ```
+   
+   
 
 
-## Repo-Link 
+## API Root Endpoint 
 
-Link: https://github.com/nitinpal0211/mucho-interest-4403
+Link: http://localhost:8888/swagger-ui/
 
 ## Presenatation Link:
 
@@ -74,13 +83,13 @@ Link:
 
 ## Roles & Responsibilities :-
 
-All Work of Admin and Customer Management and LogIn Auth done by [Shimbu Kumawat](https://github.com/Shimbhu77)
+All Work of Admin and Customer Management and LogIn Auth done by [Shimbhu Kumawat](https://github.com/Shimbhu77)
 
 All Work of Plant management Done By [Nitin Kumar](https://github.com/nitinpal0211) 
 
 All Work of Planter and Er Dia Done By [Shreyash Ahuja](https://github.com/loki025)
 
-All Work of Seed management Done by [Aakash Kumar](https://github.com/akash07032001)
+All Work of Seed management Done by [Akash Kumar](https://github.com/akash07032001)
 
 All work of order Management Done By [Chetan Patil](https://github.com/Chetan8788)
 
@@ -99,13 +108,13 @@ Our code writing style became cleaner as we had to think while writing code that
 
 ## Team - Members:
 
-👤 [Nitin Kumar-Leader](https://github.com/nitinpal0211)
+👤 [Nitin Kumar - Team Leader](https://github.com/nitinpal0211)
 
-👤 [Shimbu Kumawat](https://github.com/Shimbhu77)
+👤 [Shimbhu Kumawat](https://github.com/Shimbhu77)
 
 👤 [Shreyash Ahuja](https://github.com/loki025)
 
 👤 [Chetan Patil](https://github.com/Chetan8788)
 
-👤 [Aakash Kumar](https://github.com/akash07032001)
+👤 [Akash Kumar](https://github.com/akash07032001)
 
