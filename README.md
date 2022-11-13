@@ -42,12 +42,12 @@ The objective to create this project was to implement all things which we have l
 
 - For Data Security We Build SignUp - Login For customer and Admin.  
 - Stored the data In MySQL and that Can be access By only Authenticated User.
-- Proper Exception Handling 
-- Proper Input Validation 
+- Proper Exception Handling.
+- Proper Input Validation. 
 
 ## Installation and Run 
 
-You can clone this repo and start the serve on localhost
+You can clone this repo and start the serve on localhost.
 Before running the API server, we should update the database config inside the application.properties file.
 Update the port number, username and password as per your local database config.
 
@@ -99,9 +99,9 @@ We all became proficient in reading the code of team members.
 
 We got the better Idea and perspective of Different Layers Like: Presentation Layer, Service Layer and Data Access layer.
 
-We get Good Idea about Team management and team collaboration 
+We get good idea about Team management and team Collaboration. 
 
-our skills in Java And Spring boot Became more better
+our skills in Java And Spring boot became more better.
 
 Our code writing style became cleaner as we had to think while writing code that other team members will be reading. 
 
