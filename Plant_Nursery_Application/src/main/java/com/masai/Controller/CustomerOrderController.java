@@ -25,7 +25,7 @@ import com.masai.model.OrdersDTO;
 
 @RestController
 @RequestMapping("/orders")
-public class OrderController {
+public class CustomerOrderController {
    
 	@Autowired
 	private OrderService orderService;
@@ -49,12 +49,12 @@ public class OrderController {
 	}
 	
 	@DeleteMapping("/orders/{orderId}/{key}")
-	public ResponseEntity<Orders> deleteOrder(@PathVariable("orderId") Integer id,@PathVariable("key") String key) throws OrderException, CustomerException
+	public ResponseEntity<String> deleteOrder(@PathVariable("orderId") Integer id,@PathVariable("key") String key) throws OrderException, CustomerException
 	{
 		
-		Orders details = orderService.deleteOrder(id, key);
+		String details = orderService.deleteOrder(id, key);
 		
-		return new ResponseEntity<Orders>(details,HttpStatus.CREATED);
+		return new ResponseEntity<String>(details,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/orders/{orderId}/{key}")

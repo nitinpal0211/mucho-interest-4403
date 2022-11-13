@@ -14,7 +14,7 @@ import com.masai.Service.LoginService;
 import com.masai.model.CustomerDTO;
 
 @RestController
-public class LoginController {
+public class CustomerLoginController {
 
 	@Autowired
 	private LoginService lService;

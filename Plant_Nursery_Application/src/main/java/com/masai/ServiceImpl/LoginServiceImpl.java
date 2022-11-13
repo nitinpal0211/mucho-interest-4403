@@ -63,7 +63,7 @@ public class LoginServiceImpl implements LoginService {
 			
 			sessionDao.save(cus);
 			
-			return "Login succesfully , Unique key :  "+key+" details : "+user.toString();
+			return "Login succesfully , Unique key :  "+key+" , And details : "+user.toString();
 		}
 		else
 		{
@@ -111,7 +111,7 @@ public class LoginServiceImpl implements LoginService {
 			
 			adminSessionDao.save(cus);
 			
-		    return "Login succesfully , Unique key :  "+key+" details : "+user.toString();
+		    return "Login succesfully , Unique key :  "+key+" , And details : "+user.toString();
 		}
 		else
 		{

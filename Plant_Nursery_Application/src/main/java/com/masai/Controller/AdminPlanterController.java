@@ -24,7 +24,7 @@ import com.masai.Service.PlanterService;
 
 @RestController
 @RequestMapping("/Planter")
-public class PlanterController {
+public class AdminPlanterController {
 
 	@Autowired
 	private PlanterService planterService;

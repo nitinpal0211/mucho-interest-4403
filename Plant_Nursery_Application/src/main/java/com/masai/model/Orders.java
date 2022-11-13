@@ -37,13 +37,13 @@ public class Orders {
 	private Integer customerId;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private Set<Planter> orderPlanters;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private Set<Plant> orderPlants;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	private Set<Seed> orderSeeds;
 	
 	

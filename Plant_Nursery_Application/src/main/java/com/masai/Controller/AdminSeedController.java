@@ -23,7 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @EnableSwagger2
-public class SeedController {
+public class AdminSeedController {
 	@Autowired
 	private SeedService sService;
 	

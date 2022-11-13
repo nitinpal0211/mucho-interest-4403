@@ -74,7 +74,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Customer deleteCustomer(Customer tenant, String Key) throws CustomerException {
+	public Customer deleteCustomer(String email, String Key) throws CustomerException {
 		
 		CurrentAdminSession  loggedAdmin= adminSessionDao.findByUuid(Key);
 		
@@ -83,14 +83,14 @@ public class AdminServiceImpl implements AdminService{
 			throw new CustomerException("Admin not login , Please Enter a Valid Key to delete a customer.");
 		}
 			
-		Customer existingCustomer = customerDao.findByCustomerEmail(tenant.getCustomerEmail());
+		Customer existingCustomer = customerDao.findByCustomerEmail(email);
 		
 			if(existingCustomer!=null)
 			{
-				 customerDao.delete(tenant);
+				 customerDao.delete(existingCustomer);
 				 
-				 sessionDao.deleteById(tenant.getCustomerId());
-				 return tenant;
+				 sessionDao.deleteById(existingCustomer.getCustomerId());
+				 return existingCustomer;
 				
 			}
 			
