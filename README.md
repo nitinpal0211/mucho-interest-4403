@@ -77,6 +77,20 @@ Update the port number, username and password as per your local database config.
 
 Link: http://localhost:8888/swagger-ui/
 
+## API Module Endpoints
+
+### Admin Login-Logout
+- `POST  /Admin/login` Logging in as a Admin with valid Email and Pass.
+- `GET   /Admin/logout/{key}` Logout as a Admin with valid Key or Session token.
+
+### admin-customer-controller
+- `POST /Admin/customers/{key}`       To Add a Customer with valid Session token 
+- `GET  /Admin/customers/{key}`       To View All Customers with valid Session token
+- `GET  /Admin/customers/{customerId}/{key}/`                       To view Customer With customerId with valid sesion token
+- `GET  /Admin/customers/{customerEmail}/{customerPassword}/{key}`  To validate Customer with Proper Email and pass of customer
+- `PUT     /Admin/customers/{key}`             To Update Customer With Proper session token
+- `DELETE  /Admin/customers/{email}/{key}`  To delete customer With proper Session Token  
+
 ## Presenatation Link:
 
 Link: 
