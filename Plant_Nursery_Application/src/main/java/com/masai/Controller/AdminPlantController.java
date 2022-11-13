@@ -20,7 +20,7 @@ import com.masai.Service.plantService;
 import com.masai.model.Plant;
 
 @RestController
-public class PlantController {
+public class AdminPlantController {
 
 	@Autowired
 	private plantService pService;;

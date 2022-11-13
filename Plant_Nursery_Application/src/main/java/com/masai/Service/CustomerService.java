@@ -14,7 +14,7 @@ public interface CustomerService {
 
 	public Customer addCustomer(Customer customer) throws CustomerException;
 	public Customer upadateCustomer(Customer tenant, String key) throws CustomerException;
-	public Customer deleteCustomer(Customer tenant,String Key) throws CustomerException;
+	public Customer deleteCustomer(String email,String Key) throws CustomerException;
 	public List<Plant> viewAllPlants(String Key) throws CustomerException;
 	public List<Planter> viewAllPlanters(String Key) throws CustomerException;
 	public List<Seed> viewAllSeeds(String Key) throws CustomerException;

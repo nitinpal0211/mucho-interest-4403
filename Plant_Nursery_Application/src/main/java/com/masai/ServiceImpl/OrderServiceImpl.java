@@ -85,7 +85,7 @@ public class OrderServiceImpl implements OrderService {
 			 Optional<Plant> plant =plantDao.findById(orders.getPlantId());
 			 Optional<Seed> seed =seedDao.findById(orders.getSeedId());
 			 
-			 if(!(planter.isPresent()||plant.isPresent()||seed.isPresent()))
+			 if(!(planter.isPresent()&&plant.isPresent()&&seed.isPresent()))
 			 {
 				 throw new OrderException("Invalid product Id , put right Product Id , Please add one product to place the order.");
 			 }
@@ -274,7 +274,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public Orders deleteOrder(Integer orderId, String key) throws OrderException, CustomerException {
+	public String deleteOrder(Integer orderId, String key) throws OrderException, CustomerException {
 		
 		 CurrentUserSession  loggeduser= sessionDao.findByUuid(key);
 			
@@ -295,7 +295,7 @@ public class OrderServiceImpl implements OrderService {
 					  {
 						  orderDao.delete(orders.get());
 						  
-						  return orders.get();
+						  return "Order deleted successfully.";
 					  }
 					  throw new CustomerException("invalid key , Please login first for deleting the order. ");
 				  }

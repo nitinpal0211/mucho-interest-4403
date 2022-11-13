@@ -74,7 +74,7 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public Customer deleteCustomer(Customer customer, String Key) throws CustomerException {
+	public Customer deleteCustomer(String email, String Key) throws CustomerException {
 		
         CurrentUserSession  loggeduser= sessionDao.findByUuid(Key);
  		
@@ -83,16 +83,22 @@ public class CustomerServiceImpl implements CustomerService{
 			throw new CustomerException("Please Enter a Valid Key to delete customer account.");
 		}
 		
-		if(customer.getCustomerId()==loggeduser.getUserId())
+		Customer existingCustomer = customerDao.findByCustomerEmail(email);
+		
+		if(existingCustomer==null)
 		{
-			 customerDao.delete(customer);
-			 
-			 sessionDao.delete(loggeduser);
-			 return customer;
-			
+			throw  new CustomerException("Invalid Customer Email details ");
 		}
 		
-		throw new CustomerException("Invalid Customer details , Please login first for deleting account.");
+		if(existingCustomer.getCustomerId()==loggeduser.getUserId())
+		{
+			 customerDao.delete(existingCustomer);
+			 
+			 sessionDao.delete(loggeduser);
+			 return existingCustomer;
+			
+		}
+		else throw new CustomerException("Please login first for deleting account.");
 	}
 
 	@Override
@@ -105,7 +111,14 @@ public class CustomerServiceImpl implements CustomerService{
 			throw new CustomerException("Please Enter a Valid Key to update a customer.");
 		}
 		
-		 return plantDao.findAll();
+		List<Plant> plants= plantDao.findAll();
+		
+		if(plants.size()==0)
+		{
+			throw new CustomerException("No plants available.");
+		}
+		
+		return plants;
 		
 		
 	}
@@ -121,7 +134,17 @@ public class CustomerServiceImpl implements CustomerService{
 			throw new CustomerException("Please Enter a Valid Key to update a customer.");
 		}
 		
-		 return planterDao.findAll();
+		
+		 
+		 List<Planter> plants= planterDao.findAll();
+			
+			if(plants.size()==0)
+			{
+				throw new CustomerException("No planters available.");
+			}
+			
+			return plants;
+
 		
 	}
 
@@ -135,7 +158,16 @@ public class CustomerServiceImpl implements CustomerService{
 			throw new CustomerException("Please Enter a Valid Key to update a customer.");
 		}
 		
-		 return seedDao.findAll(); 
+		 
+		 
+		 List<Seed> plants= seedDao.findAll(); 
+			
+			if(plants.size()==0)
+			{
+				throw new CustomerException("No Seeds available.");
+			}
+			
+			return plants;
 		
 	}
 
