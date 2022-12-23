@@ -37,7 +37,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private AdminSessionDao adminSessionDao;
 	
-	
+	// this method log in the account
 	@Override
 	public String logIntoAccount(CustomerDTO dto) throws LoginException {
 		
@@ -71,6 +71,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 	}
 
+	// this method will log out from account
 	@Override
 	public String logOutFromAccount(String key) throws LoginException {
 		
@@ -86,6 +87,7 @@ public class LoginServiceImpl implements LoginService {
 	     return "Logged out Successfully.";
 	}
 
+	// this method will log in Admin in account
 	@Override
 	public String logAdminIntoAccount(AdminDTO dto) throws LoginException {
 
@@ -119,6 +121,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 	}
 
+	// this method will log out Admin from account
 	@Override
 	public String logOutAdminFromAccount(String key) throws LoginException {
 
