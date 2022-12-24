@@ -27,6 +27,7 @@ public class AdminSeedController {
 	@Autowired
 	private SeedService sService;
 	
+	// this method will return response entity of Seed
 	@PostMapping("/seed/{key}")
 	public ResponseEntity<Seed> addSeedHandler(@RequestBody Seed seed,@PathVariable("key")String key) throws SeedException,CustomerException, LoginException{
 		
@@ -34,6 +35,7 @@ public class AdminSeedController {
 		return new ResponseEntity<Seed>(s,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Seed
 	@PutMapping("/seed/{key}")
 	public ResponseEntity<Seed> updateSeedHandler(@RequestBody Seed seed,@PathVariable("key") String key) throws SeedException, CustomerException, LoginException{
 		Seed s = sService.updateSeed(seed, key);
@@ -41,19 +43,21 @@ public class AdminSeedController {
 	}
 	
 	
-
+	// this method will return response entity of Seed
 	@DeleteMapping("/seed/{id}/{key}")
 	public ResponseEntity<Seed> deleteSeedByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws SeedException, CustomerException, LoginException{
 		Seed seed = sService.deleteSeed(id, key);
 		return new ResponseEntity<Seed>(seed,HttpStatus.OK);
 	}
 	
+	// this method will return response entity of Seed
 	@GetMapping("/viewSeedById/{id}/{key}")
 	public ResponseEntity<Seed> viewSeedById(@PathVariable("id") Integer id,@PathVariable("key") String key) throws SeedException, LoginException{
 		Seed seeds = sService.viewSeed(id,key);
 		return new ResponseEntity<Seed>(seeds,HttpStatus.ACCEPTED);
 	}
 	
+	// this method will return response entity of list of Seed
 	@GetMapping("/viewSeedByType/{type}/{key}")
 	public ResponseEntity<List<Seed>> viewAllSeedByType(@PathVariable("type") String type,@PathVariable("key") String key) throws SeedException, LoginException{
 		

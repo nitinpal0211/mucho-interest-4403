@@ -35,6 +35,8 @@ public class AdminCustomerController {
 	@Autowired
 	private AdminService adminService;
 	
+	
+	// this method will return response entity of String
 	@PostMapping("/login")
 	public ResponseEntity<String> logInAdmin(@RequestBody AdminDTO dto) throws LoginException
 	{
@@ -43,7 +45,7 @@ public class AdminCustomerController {
 		return new ResponseEntity<String>(message,HttpStatus.ACCEPTED);
 	}
 	
-	
+	// this method will return response entity of String
 	@GetMapping("/logout/{key}")
 	public ResponseEntity<String> logoutAdmin(@PathVariable("key") String key) throws LoginException
 	{
@@ -52,6 +54,7 @@ public class AdminCustomerController {
 		return new ResponseEntity<String>(message,HttpStatus.ACCEPTED);
 	}
 	
+	// this method will return response entity of Customer
 	@PostMapping("/customers/{key}")
 	public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer,@PathVariable("key") String key) throws CustomerException
 	{
@@ -60,6 +63,7 @@ public class AdminCustomerController {
 		return new ResponseEntity<Customer>(user,HttpStatus.CREATED);
 	}
 	
+	// // this method will return response entity of Customer
 	@PutMapping("/customers/{key}")
 	public ResponseEntity<Customer> updateCustomer(@Valid @RequestBody Customer customer,@PathVariable("key") String key) throws CustomerException
 	{
@@ -68,6 +72,7 @@ public class AdminCustomerController {
 		return new ResponseEntity<Customer>(user,HttpStatus.ACCEPTED);
 	}
 	
+	// this method will return response entity of Customer
 	@DeleteMapping("/customers/{email}/{key}")
 	public ResponseEntity<Customer> deleteCustomer(@PathVariable("email") String email,@PathVariable("key") String key) throws CustomerException
 	{
@@ -75,6 +80,8 @@ public class AdminCustomerController {
 		
 		return new ResponseEntity<Customer>(user,HttpStatus.OK);
 	}
+	
+	// this method will return response entity of Customer
 	@GetMapping("/customers/{customerId}/{key}")
 	public ResponseEntity<Customer> viewCustomerById(@PathVariable("customerId") Integer id,@PathVariable("key") String key) throws LoginException, CustomerException
 	{
@@ -83,6 +90,7 @@ public class AdminCustomerController {
 		return new ResponseEntity<Customer>(customer,HttpStatus.ACCEPTED);
 	}
 	
+	// this method will return response entity of list of customer
 	@GetMapping("/customers/{key}")
 	public ResponseEntity<List<Customer> > viewAllCustomer(@PathVariable("key") String key) throws LoginException, CustomerException
 	{
@@ -90,6 +98,8 @@ public class AdminCustomerController {
 		
 		return new ResponseEntity<List<Customer> >(customer,HttpStatus.ACCEPTED);
 	}
+	
+	// this method will return response entity of customer
 	@GetMapping("/customers/{customerEmail}/{customerPassword}/{key}")
 	public ResponseEntity<Customer> validateCustomer(@PathVariable("customerEmail") String email,@PathVariable("customerPassword") String password,@PathVariable("key") String key) throws LoginException, CustomerException
 	{

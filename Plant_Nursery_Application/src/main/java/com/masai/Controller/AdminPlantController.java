@@ -25,6 +25,7 @@ public class AdminPlantController {
 	@Autowired
 	private plantService pService;;
 	
+	// this method will return response entity of plant
 	@PostMapping("/plant/{key}")
 	public ResponseEntity<Plant> addNewPlantHandler(@RequestBody Plant plant,@PathVariable("key") String key) throws PlantException,LoginException{
 		
@@ -33,6 +34,8 @@ public class AdminPlantController {
 		
 		
 	}
+	
+	// this method will return response entity of plant
 	@PutMapping("/plant/{key}")
 	public ResponseEntity<Plant> updatePlantHandler(@RequestBody Plant palnt,@PathVariable("key") String key) throws PlantException, LoginException{
 		
@@ -40,34 +43,35 @@ public class AdminPlantController {
 		return new ResponseEntity<Plant>(updatedPlant,HttpStatus.ACCEPTED);
 	}
 	
-	
+	// this method will return response entity of plant
 	@DeleteMapping("/plant/{id}/{key}")
 	public ResponseEntity<Plant> deletePlantByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws PlantException, LoginException{
 	  Plant plant=	pService.deletePlant(id,key);
 	  return new ResponseEntity<Plant>(plant,HttpStatus.ACCEPTED);
 	}
 	
-	
+	// this method will return response entity of plant
 	@GetMapping("/getPlantById/{id}/{key}")
 	public ResponseEntity<Plant> viewPlantByIdHandler(@PathVariable("id") Integer id,@PathVariable("key") String key) throws PlantException, LoginException{
 		Plant plant = pService.viewPlantById(id,key);
 		return new ResponseEntity<Plant>(plant,HttpStatus.OK);
 	}
 	
+	// this method will return response entity of plant
 	@GetMapping("/getPlantByName/{name}/{key}")
 	public ResponseEntity<Plant> viewPlantByCommonNameHandler(@PathVariable("name") String name,@PathVariable("key") String key) throws PlantException, LoginException{
 		Plant plant = pService.viewPlantByCommonName(name,key);
 		return new ResponseEntity<Plant>(plant,HttpStatus.OK);
 	}
 	
-	
+	// this method will return response entity of list of plant
 	@GetMapping("/allPlants/{key}")
 	public ResponseEntity<List<Plant>> viewAllPlantsHandler(@PathVariable("key") String key) throws PlantException, LoginException{
 		List<Plant> plist = pService.viewAllPlant(key);
 		return new ResponseEntity<List<Plant>>(plist,HttpStatus.OK);
 	}
 	
-	
+	// this method will return response entity of list of plant
 	@GetMapping("/allPlantByType/{type}/{key}")
 	public ResponseEntity<List<Plant>> viewAllPlantsByTypeOfPlant(@PathVariable("type") String type,@PathVariable("key") String key) throws PlantException, LoginException{
 		List<Plant> plist = pService.viewAllPlantByTypeOfPlant(type,key);

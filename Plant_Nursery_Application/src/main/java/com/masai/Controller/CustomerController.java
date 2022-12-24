@@ -45,6 +45,7 @@ public class CustomerController {
 	@Autowired
 	private SeedService seedService;
 	
+	// this method will return response entity of Customer
 	@PostMapping("/customers")
 	public ResponseEntity<Customer> CreateNewAccount(@Valid @RequestBody Customer customer) throws CustomerException
 	{
@@ -54,6 +55,7 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(user,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Customer
 	@PutMapping("/customers/{key}")
 	public ResponseEntity<Customer> updateAccount(@Valid @RequestBody Customer customer,@PathVariable("key") String key) throws CustomerException
 	{
@@ -62,6 +64,8 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(user,HttpStatus.ACCEPTED);
 	}
 	
+	
+	// this method will return response entity of Customer
 	@DeleteMapping("/customers/{email}/{key}")
 	public ResponseEntity<Customer> deleteAccount(@PathVariable("email") String email,@PathVariable("key") String key) throws CustomerException
 	{
@@ -70,6 +74,7 @@ public class CustomerController {
 		return new ResponseEntity<Customer>(user,HttpStatus.OK);
 	}
 	
+	// this method will return response entity of list of plant
 	@GetMapping("/customers/viewAllPlants/{key}")
 	public ResponseEntity<List<Plant>> viewAllPlants(@PathVariable("key") String key) throws CustomerException, PlantException
 	{
@@ -78,6 +83,7 @@ public class CustomerController {
 		return new ResponseEntity<List<Plant>>(list,HttpStatus.OK);
 	}
 	
+	// this method will return response entity of list of planters
 	@GetMapping("/customers/viewAllPlanters/{key}")
 	public ResponseEntity<List<Planter>> viewAllPlanters(@PathVariable("key") String key) throws CustomerException, PlanterException
 	{
@@ -86,6 +92,7 @@ public class CustomerController {
 		return new ResponseEntity<List<Planter>>(list,HttpStatus.OK);
 	}
 	
+	// this method will return response entity of list of seed
 	@GetMapping("/customers/viewAllSeeds/{key}")
 	public ResponseEntity<List<Seed>> viewAllSeeds(@PathVariable("key") String key) throws CustomerException, SeedException
 	{

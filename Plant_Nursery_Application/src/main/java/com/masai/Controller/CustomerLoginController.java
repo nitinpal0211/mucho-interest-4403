@@ -19,6 +19,7 @@ public class CustomerLoginController {
 	@Autowired
 	private LoginService lService;
 	
+	// this method will return response entity of String
 	@PostMapping("/login")
 	public ResponseEntity<String> logInCustomer(@RequestBody CustomerDTO dto) throws LoginException
 	{
@@ -27,7 +28,7 @@ public class CustomerLoginController {
 		return new ResponseEntity<String>(message,HttpStatus.ACCEPTED);
 	}
 	
-	
+	// this method will return response entity of String
 	@GetMapping("/logout/{key}")
 	public ResponseEntity<String> logoutCustomer(@PathVariable("key") String key) throws LoginException
 	{

@@ -30,6 +30,7 @@ public class CustomerOrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	// this method will return response entity of Order
 	@PostMapping("/orders/{key}")
 	public ResponseEntity<Orders> addOrder(@Valid @RequestBody OrdersDTO dto,@PathVariable("key") String key) throws OrderException, CustomerException
 	{
@@ -39,6 +40,7 @@ public class CustomerOrderController {
 		return new ResponseEntity<Orders>(details,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Order
 	@PutMapping("/orders/{orderId}/{key}")
 	public ResponseEntity<Orders> updateOrder(@Valid @RequestBody OrdersDTO dto,@PathVariable("orderId") Integer id,@PathVariable("key") String key) throws OrderException, CustomerException
 	{
@@ -48,6 +50,7 @@ public class CustomerOrderController {
 		return new ResponseEntity<Orders>(details,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of String
 	@DeleteMapping("/orders/{orderId}/{key}")
 	public ResponseEntity<String> deleteOrder(@PathVariable("orderId") Integer id,@PathVariable("key") String key) throws OrderException, CustomerException
 	{
@@ -57,6 +60,7 @@ public class CustomerOrderController {
 		return new ResponseEntity<String>(details,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Order
 	@GetMapping("/orders/{orderId}/{key}")
 	public ResponseEntity<Orders> viewOrder(@PathVariable("orderId") Integer id,@PathVariable("key") String key) throws OrderException, CustomerException
 	{
@@ -66,6 +70,7 @@ public class CustomerOrderController {
 		return new ResponseEntity<Orders>(details,HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of list of orders
 	@GetMapping("/orders/{key}")
 	public ResponseEntity<List<Orders> > viewAllOrder(@PathVariable("key") String key) throws OrderException, CustomerException
 	{
