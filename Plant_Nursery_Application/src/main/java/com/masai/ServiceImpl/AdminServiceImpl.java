@@ -31,6 +31,8 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminSessionDao adminSessionDao;
 	
+	
+	// this method will add a customer while taking customer details and key as a parameter 
 	@Override
 	public Customer addCustomer(Customer customer, String key) throws CustomerException {
 		
@@ -51,7 +53,8 @@ public class AdminServiceImpl implements AdminService{
 		
 		return customerDao.save(customer);
 	}
-
+	
+	// this method will update a customer while taking customer details and key as a parameter 
 	@Override
 	public Customer upadateCustomer(Customer tenant, String key) throws CustomerException {
         
@@ -73,6 +76,7 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 
+	// this method will delete a customer while taking customer email and key as a parameter 
 	@Override
 	public Customer deleteCustomer(String email, String Key) throws CustomerException {
 		
@@ -98,6 +102,7 @@ public class AdminServiceImpl implements AdminService{
 
 	}
 
+	// this method will get a customer while taking customer id and key as a parameter 
 	@Override
 	public Customer viewCustomer(Integer customerId, String key) throws CustomerException {
 		
@@ -120,6 +125,7 @@ public class AdminServiceImpl implements AdminService{
 				throw new CustomerException("Invalid Customer Id details ");
 	}
 
+	// this method will show all customers while taking key as a parameter
 	@Override
 	public List<Customer> viewAllCustomers(String key) throws CustomerException {
 		 
@@ -142,6 +148,7 @@ public class AdminServiceImpl implements AdminService{
 				throw new CustomerException("No Customer  details found.");
 	}
 
+	// this method will check validation of customer while taking userName,password and key as a parameter
 	@Override
 	public Customer validateCustomer(String userName, String password, String key) throws CustomerException {
 

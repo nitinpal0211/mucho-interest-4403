@@ -31,6 +31,7 @@ public class PlanterServiceImpl implements PlanterService{
 	@Autowired
 	private AdminSessionDao adminSessionDao;
 	
+	// this method will add a planter
 	@Override
 	public Planter addPlanter(Planter planter,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -52,6 +53,7 @@ public class PlanterServiceImpl implements PlanterService{
 		
 	}
 
+	// this method will update a planter
 	@Override
 	public Planter updatePlanter(Planter planter,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -76,6 +78,7 @@ public class PlanterServiceImpl implements PlanterService{
 		
 	}
 
+	// this method will delete a planter
 	@Override
 	public Planter deletePlanter(Integer planterId,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -99,6 +102,7 @@ public class PlanterServiceImpl implements PlanterService{
 			throw  new PlanterException("Please enter valid planterId to delete planter");
 	}
 
+	// this method will get a particular planter details
 	@Override
 	public Planter viewPlanter(Integer planterId,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -118,6 +122,7 @@ public class PlanterServiceImpl implements PlanterService{
 		
 	}
 
+	// this method will return particular planters
 	@Override
 	public List<Planter> viewPlanter(String planterShape,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -138,6 +143,7 @@ public class PlanterServiceImpl implements PlanterService{
 		     throw  new PlanterException("planter with this plantershape does not exist try different plantershape name ");
 	}
 
+	// this planter will return particular planters
 	@Override
 	public List<Planter> viewAllPlanters(String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
@@ -158,6 +164,7 @@ public class PlanterServiceImpl implements PlanterService{
 
 	@Override
 
+	// this method will view return all planters
 	public List<Planter> viewAllPlanters(Double minCost, Double maxCost,String key) throws PlanterException, LoginException {
 		// TODO Auto-generated method stub
 		

@@ -29,7 +29,7 @@ public class AdminPlanterController {
 	@Autowired
 	private PlanterService planterService;
 	
-	
+	// this method will return response entity of Planter
 	@PostMapping("/add/{key}")
 	public ResponseEntity<Planter> addNewPlanter(@Valid @RequestBody Planter planter,@PathVariable("key") String key) throws PlanterException, LoginException{
 		
@@ -40,6 +40,7 @@ public class AdminPlanterController {
 		return new ResponseEntity<Planter>(addPlanter, HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Planter
 	@DeleteMapping("/delete/{planterId}/{key}")
 	public ResponseEntity<Planter> deletePlanter(@PathVariable Integer planterId,@PathVariable("key") String key )throws PlanterException, LoginException{
 
@@ -50,6 +51,7 @@ public class AdminPlanterController {
 		return new ResponseEntity<Planter>(deletedPlanter, HttpStatus.OK);
 	}
 	
+	// this method will return response entity of Planter
 	@PutMapping("/update/{key}")
 	public ResponseEntity<Planter> updatePlanter(@RequestBody Planter planter,@PathVariable("key") String key) throws  PlanterException, LoginException{
 
@@ -59,6 +61,7 @@ public class AdminPlanterController {
 		return new ResponseEntity<Planter>(updatedPlanter, HttpStatus.CREATED);
 	}
 	
+	// this method will return response entity of Planter
 	@GetMapping("/byID/{planterId}/{key}")
 	public ResponseEntity<Planter> getPlanterById(@PathVariable Integer planterId,@PathVariable("key") String key)throws PlanterException, LoginException{
 		
@@ -67,6 +70,7 @@ public class AdminPlanterController {
 		return new ResponseEntity<Planter>(specificPlanter, HttpStatus.OK);
 	}
 	
+	// this method will return response entity of list of Planter
 	@GetMapping("/{planterShape}/{key}")
 	public ResponseEntity<List<Planter>> viewPlanterByShape(@PathVariable String planterShape,@PathVariable("key") String key) throws PlanterException, LoginException{
 
@@ -74,6 +78,8 @@ public class AdminPlanterController {
 
 		return new ResponseEntity<List<Planter>>(plantersByShape, HttpStatus.OK);
 	}
+	
+	// this method will return response entity of list of Planter
 	@GetMapping("/all/{key}")
 	public ResponseEntity<List<Planter>> viewAllPlanters(@PathVariable("key") String key) throws PlanterException, LoginException{
 
@@ -82,7 +88,7 @@ public class AdminPlanterController {
 		return new ResponseEntity<List<Planter>>(allPlanters, HttpStatus.OK);
 	}
 	
-
+	// this method will return response entity of list of Planter
 	@GetMapping("/all/range/{key}")
 	public ResponseEntity<List<Planter>> viewAllPlantersByTypeOfPlanter(@RequestParam Double minCost,@RequestParam Double maxCost,@PathVariable("key") String key) throws PlanterException, LoginException{
 		   

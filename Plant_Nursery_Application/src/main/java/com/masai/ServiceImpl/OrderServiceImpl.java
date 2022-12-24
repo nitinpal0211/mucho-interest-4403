@@ -48,6 +48,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private PlantDao plantDao;
 
+	// this method will add a order
 	@Override
 	public Orders addOrder(OrdersDTO orders, String key) throws CustomerException, OrderException{
 
@@ -158,6 +159,7 @@ public class OrderServiceImpl implements OrderService {
 		
 	}
 
+	// this method will update a order
 	@Override
 	public Orders updateOrder(OrdersDTO orders,Integer orderId, String key) throws OrderException, CustomerException {
 		
@@ -273,6 +275,7 @@ public class OrderServiceImpl implements OrderService {
 			throw new CustomerException("Please login first for updating the order. "); 
 	}
 
+	// this method will delete a order
 	@Override
 	public String deleteOrder(Integer orderId, String key) throws OrderException, CustomerException {
 		
@@ -304,6 +307,7 @@ public class OrderServiceImpl implements OrderService {
 			  throw new CustomerException("Invalid key details , Please login first for deleting the order. ");
 	}
 
+	// this method will get the particular order details 
 	@Override
 	public Orders viewOrder(Integer orderId, String key) throws OrderException, CustomerException {
 		
@@ -333,6 +337,7 @@ public class OrderServiceImpl implements OrderService {
 		  throw new CustomerException("Invalid key details , Please login first for viewing the order. ");
 	}
 
+	// this method will return all orders
 	@Override
 	public List<Orders> viewAllOrder(String key) throws OrderException, CustomerException {
 CurrentUserSession  loggeduser= sessionDao.findByUuid(key);

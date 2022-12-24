@@ -25,6 +25,8 @@ public class SeedServiceImpl implements SeedService {
 	private SessionDao sessionDao;
 	@Autowired
 	private AdminSessionDao adminsessioDao;
+	
+	// this method will add a seed
 	@Override
 	public Seed addSeed(Seed seed,String key) throws SeedException, LoginException {
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -43,9 +45,9 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		}
 	}
 
+	// this method will update a seed
 	@Override
-	public Seed updateSeed(Seed seed,String key) throws SeedException, LoginException {
-		
+	public Seed updateSeed(Seed seed,String key) throws SeedException, LoginException {		
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		
 		if(loggeduser==null)
@@ -63,6 +65,7 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		
 	}
 
+	// this method will delete a particular seed
 	@Override
 	public Seed deleteSeed(Integer seedId,String key) throws SeedException, LoginException {
          CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -85,6 +88,7 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 	 
 	}
 
+	// this method will return a particular seed
 	@Override
 	public Seed viewSeed(Integer seedId,String key) throws SeedException, LoginException {
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -96,6 +100,7 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		return sdao.findById(seedId).orElseThrow(()-> new SeedException("No seed found with id "+ seedId));
 	}
 
+	// this method will return a particular seed
 	@Override
 	public Seed viewSeed(String name,String key) throws SeedException, LoginException {
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -112,6 +117,7 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
        }
 	}
 
+	// this will return all seeds
 	@Override
 	public List<Seed> viewAllSeed(String key) throws SeedException,LoginException {
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -130,6 +136,7 @@ CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
 		
 	}
 
+	// this method will return a particular seeds
 	@Override
 	public List<Seed> viewAllSeed(String typeOfSeed,String key) throws SeedException, LoginException {
 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
