@@ -25,8 +25,9 @@ public class PlantServiceImpl implements plantService {
 	
 	@Autowired
 	private AdminSessionDao adminsessioDao;
-	@Override
 	
+	// this method will add a plant
+	@Override
 	public Plant addPlant(Plant plant,String key) throws PlantException,LoginException {
 		
 		
@@ -52,6 +53,7 @@ public class PlantServiceImpl implements plantService {
 		
 	}
 
+	// this method will update a plant
 	@Override
 	public Plant updatePlant(Plant plant,String key) throws PlantException ,LoginException{
 		
@@ -72,6 +74,7 @@ public class PlantServiceImpl implements plantService {
 		}
 	}
 
+	// this method will delete a plant
 	@Override
 	public Plant deletePlant(Integer plantId,String key) throws PlantException,LoginException {
 	  
@@ -93,6 +96,7 @@ public class PlantServiceImpl implements plantService {
 	  }
 	}
 
+	// this method will get a particular plant
 	@Override
 	public Plant viewPlantById(Integer plantId,String key) throws PlantException,LoginException {
 		 CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -104,6 +108,7 @@ public class PlantServiceImpl implements plantService {
 		return pdao.findById(plantId).orElseThrow(()-> new PlantException("No plant found with id "+ plantId));
 	}
 
+	// this method will return particular plants
 	@Override
 	public Plant viewPlantByCommonName(String name,String key) throws PlantException, LoginException {
 		CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);
@@ -121,6 +126,7 @@ public class PlantServiceImpl implements plantService {
 		}
 	}
 
+	// this method will return all plants
 	@Override
 	public List<Plant> viewAllPlant(String key) throws PlantException, LoginException {
 		CurrentAdminSession  loggeduser= adminsessioDao.findByUuid(key);

@@ -37,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	private PlantDao plantDao;
 
+	// this method will add a customer 
 	@Override
 	public Customer addCustomer(Customer customer) throws CustomerException {
 		
@@ -53,6 +54,7 @@ public class CustomerServiceImpl implements CustomerService{
 		return customerDao.save(customer);
 	}
 
+	// this method will update a customer
 	@Override
 	public Customer upadateCustomer(Customer tenant ,String Key) throws CustomerException {
 		
@@ -73,6 +75,7 @@ public class CustomerServiceImpl implements CustomerService{
 		
 	}
 
+	// this method will delete a customer
 	@Override
 	public Customer deleteCustomer(String email, String Key) throws CustomerException {
 		
@@ -101,6 +104,7 @@ public class CustomerServiceImpl implements CustomerService{
 		else throw new CustomerException("Please login first for deleting account.");
 	}
 
+	// this method will return all plants 
 	@Override
 	public List<Plant> viewAllPlants(String Key) throws CustomerException {
 		
@@ -123,6 +127,7 @@ public class CustomerServiceImpl implements CustomerService{
 		
 	}
 
+	// this method will return all planters
 	@Override
 	public List<Planter> viewAllPlanters(String Key) throws CustomerException {
 
@@ -147,7 +152,8 @@ public class CustomerServiceImpl implements CustomerService{
 
 		
 	}
-
+	
+	//this method will return all seeds
 	@Override
 	public List<Seed> viewAllSeeds(String Key) throws CustomerException {
 		
