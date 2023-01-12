@@ -8,10 +8,8 @@ The objective to create this project was to implement all things which we have l
 
 # E-R Diagram for the application:
 
+![er_dia_](https://user-images.githubusercontent.com/105917272/212053492-2cda2c53-5e5a-45cf-a6dd-7ff3c999074c.png)
 
-
-
-![ERDiagram](https://github.com/nitinpal0211/mucho-interest-4403/blob/main/Plant_Nursery_Application/Er_And_Images/erDiagram.png?raw=true)
 
 
 # Modules:
